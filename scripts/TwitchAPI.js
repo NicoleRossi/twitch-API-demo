@@ -2,8 +2,6 @@ class TwitchAPI {
   constructor() {
     console.log('new TwitchAPI');
     this.request = new XMLHttpRequest();
-    this.request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
-    this.request.setRequestHeader('Client-ID', 'bxqhnlfew1j1uqihshtrglvfj2m4f1');
     this.request.withCredentials = true;
     this.requestListener = this.requestListener.bind(this);
   }
@@ -18,6 +16,8 @@ class TwitchAPI {
     
     request.addEventListener("load", requestListener);
     request.open("GET", `https://api.twitch.tv/kraken/search/streams?q=${searchTerm}`);
+    request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
+    request.setRequestHeader('Client-ID', 'bxqhnlfew1j1uqihshtrglvfj2m4f1');
     request.send();
   }
 
