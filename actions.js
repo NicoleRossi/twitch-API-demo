@@ -12,7 +12,7 @@ function displaySearchResults(results) {
   
   const children = searchResults.childNodes;
   if (children.length > 1) {
-    for (let i = children.length - 1; i > 0; i--) {
+    for (let i = children.length - 1; i > 1; i--) {
       searchResults.removeChild(children[i]);
     }
   }
