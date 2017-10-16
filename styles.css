@@ -27,7 +27,7 @@ article {
   align-items: center;
 }
 
-article > img {
+article img {
   border: 1px solid #000;
   margin-left: 1em;
 }
