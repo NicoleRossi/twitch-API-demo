@@ -31,9 +31,10 @@ function displaySearchResults(results) {
     summaryContainer.appendChild(subTitle);
     
     const creationDate = new Date(streams[i].created_at);
+    console.log(creationDate);
     
     const description = document.createElement('p');
-    const descriptionText = document.createTextNode(`FPS = ${streams[i].average_fps}; created = `);
+    const descriptionText = document.createTextNode(`FPS = ${streams[i].average_fps}; created at `);
     description.appendChild(descriptionText);
     summaryContainer.appendChild(description);
     
@@ -46,7 +47,7 @@ function queryTwitchAPI(evt) {
   console.log(`search term = ${tiSearchTerm.value}`);
   
   const tag = document.createElement("script");
-  tag.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(tiSearchTerm.value)}&client_id=bxqhnlfew1j1uqihshtrglvfj2m4f1&callback=displaySearchResults`;
+  tag.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(tiSearchTerm.value)}&client_id=bxqhnlfew1j1uqihshtrglvfj2m4f1&callback=displaySearchResults&limit=5`;
   document.getElementsByTagName("head")[0].appendChild(tag);
 }
 
