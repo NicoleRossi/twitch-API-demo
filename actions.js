@@ -1,21 +1,24 @@
 let btnSearch;
 let tiSearchTerm;
 let searchResults;
-let twitchAPI;
+
+function foo() {
+  console.log('actions.js --> foo');
+}
 
 function queryTwitchAPI(evt) {
   console.log('actions.js --> queryTwitchAPI');
   console.log(`search term = ${tiSearchTerm.value}`);
-  console.log(twitchAPI);
-  twitchAPI.searchFor(tiSearchTerm.value);
+  
+  const tag = document.createElement("script");
+  tag.src = `https://api.twitch.tv/kraken/search/streams?query=${tiSearchTerm.value}&callback=foo`;
+  document.getElementsByTagName("head")[0].appendChild(tag);
 }
 
 function setupEventListeners (evt) {
   window.removeEventListener('load', setupEventListeners);
   
   console.log('actions.js --> setupEventListeners');
-  
-  twitchAPI = new TwitchAPI();
   
   btnSearch = document.getElementById('search_btn');
   tiSearchTerm = document.getElementById('search_term');
