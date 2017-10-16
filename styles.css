@@ -25,6 +25,7 @@ article {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 1em;
 }
 
 h3 {
@@ -42,6 +43,10 @@ p, h6 {
 article img {
   border: 1px solid #000;
   margin-left: 1em;
+}
+
+article:last-child {
+  margin-bottom: 1em;
 }
 
 div + div {
