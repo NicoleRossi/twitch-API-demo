@@ -27,6 +27,11 @@ article {
   align-items: center;
 }
 
+p, h6 {
+  font-size: 1em;
+  font-weight: normal;
+}
+
 article img {
   border: 1px solid #000;
   margin-left: 1em;
