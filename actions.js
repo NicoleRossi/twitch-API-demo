@@ -5,8 +5,11 @@ let searchResults;
 function displaySearchResults(results) {
   console.log('actions.js --> displaySearchResults');
   console.log(results);
-  const resultsObj = JSON.parse(results);
-  console.log(resultsObj);
+  results.streams.map((stream) => {
+    for(let prop in stream) {
+      console.log(`stream[${prop}] = ${stream[prop]}`);
+    }
+  });
 }
 
 function queryTwitchAPI(evt) {
