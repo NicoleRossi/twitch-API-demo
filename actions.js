@@ -11,7 +11,7 @@ function queryTwitchAPI(evt) {
   console.log(`search term = ${tiSearchTerm.value}`);
   
   const tag = document.createElement("script");
-  tag.src = `https://api.twitch.tv/kraken/search/streams?query=${tiSearchTerm.value}&callback=foo`;
+  tag.src = `https://api.twitch.tv/kraken/search/streams?query=${tiSearchTerm.value}`;
   document.getElementsByTagName("head")[0].appendChild(tag);
 }
 
