@@ -34,13 +34,13 @@
     if (currPage === totalPages) {
       btnNext.style.display = 'none';
     } else {
-      btnNext.style.display = 'block';
+      btnNext.style.display = 'flex';
     }
 
     if (currPage === 1) {
       btnPrev.style.display = 'none';
     } else {
-      btnPrev.style.display = 'block';
+      btnPrev.style.display = 'flex';
     }
     
     const children = searchResults.childNodes;
