@@ -28,6 +28,7 @@
     totalSearchResults.textContent = `Total results:  ${totalResults}`;
 
     let totalPages = Math.ceil(totalResults / maxResults);
+    if (totalPages === 0) totalPages = 1;
     let currPage = (offset / maxResults) + 1;
     pageLocation.textContent = `${currPage} / ${totalPages}`;
 
