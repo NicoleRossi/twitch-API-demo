@@ -2,6 +2,11 @@ let btnSearch;
 let tiSearchTerm;
 let searchResults;
 
+function prependZeros(number) {
+  if (number < 10) return `0${number}`;
+  return `${number}`;
+}
+
 function displaySearchResults(results) {
   console.log('actions.js --> displaySearchResults');
   console.log(results);
@@ -31,10 +36,15 @@ function displaySearchResults(results) {
     summaryContainer.appendChild(subTitle);
     
     const creationDate = new Date(streams[i].created_at);
-    console.log(creationDate);
+    const year = creationDate.getFullYear();
+    const month = prependZeros(creationDate.getMonth()+1);
+    const day = prependZeros(creationDate.getDate());
+    const hours = prependZeros(creationDate.getHours());
+    const minutes = prependZeros(creationDate.getMinutes());
+    const creationDateStr = `${year}.${month}.${day} at ${hours}:${minutes}`;
     
     const description = document.createElement('p');
-    const descriptionText = document.createTextNode(`FPS = ${streams[i].average_fps}; created at `);
+    const descriptionText = document.createTextNode(`FPS = ${streams[i].average_fps}; created on ${creationDateStr}`);
     description.appendChild(descriptionText);
     summaryContainer.appendChild(description);
     
