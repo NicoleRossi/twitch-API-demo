@@ -1,6 +1,7 @@
 body {
   display: flex;
   flex-direction: column;
+  font: sans-serif;
 }
 
 header {
@@ -21,8 +22,5 @@ nav {
 article {
   display: flex;
   flex-direction: row;
-}
-
-article img {
-  display: block;
+  align-items: center;
 }
