@@ -10,12 +10,11 @@ function displaySearchResults(results) {
   const streams = results.streams; 
   const searchResults = document.getElementById('search_results');
   
-  if (searchResults.childNodes.length > 1) {
-    searchResults.childNodes.map((node, index) => {
-      if (index !== 0) {
-        searchResults.removeChild(node);
-      }
-    });
+  const children = searchResults.childNodes;
+  if (children.length > 1) {
+    for (let i = children.length - 1; i > 0; i++) {
+      searchResults.removeChild(children[i]);
+    }
   }
   
   for(let i = 0; i < streams.length; i++) {
