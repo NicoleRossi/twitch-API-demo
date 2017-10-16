@@ -30,6 +30,18 @@
     let totalPages = Math.ceil(totalResults / maxResults);
     let currPage = (offset / maxResults) + 1;
     pageLocation.textContent = `${currPage} / ${totalPages}`;
+
+    if (currPage === totalPages) {
+      btnNext.style.display = 'none';
+    } else {
+      btnNext.style.display = 'block';
+    }
+
+    if (currPage === 1) {
+      btnPrev.style.display = 'none';
+    } else {
+      btnPrev.style.display = 'block';
+    }
     
     const children = searchResults.childNodes;
     if (children.length > 1) {
