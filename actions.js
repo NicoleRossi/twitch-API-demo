@@ -1,3 +1,5 @@
+import TwitchAPI from './scripts/TwitchAPI';
+
 let btnSearch;
 let tiSearchTerm;
 let searchResults;
@@ -5,6 +7,7 @@ let searchResults;
 function queryTwitchAPI(evt) {
   console.log('actions.js --> queryTwitchAPI');
   console.log(`search term = ${tiSearchTerm.value}`);
+  console.log(TwitchAPI);
 }
 
 function setupEventListeners (evt) {
