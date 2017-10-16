@@ -10,7 +10,6 @@
     return `${number}`;
   }
 
-
   window[callbackName] = function (results) {
     console.log('actions.js --> displaySearchResults');
     console.log(results);
@@ -69,7 +68,7 @@
     
     const newJSONP = document.createElement("script");
     newJSONP.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(searchTerm.value)}&client_id=bxqhnlfew1j1uqihshtrglvfj2m4f1&callback=${callbackName}&limit=5&offset=${offset}`;
-    topMostHeadTag.appendChild(tag);
+    topMostHeadTag.appendChild(newJSONP);
   }
 
   function newSearchOnTwitchAPI (evt) {
