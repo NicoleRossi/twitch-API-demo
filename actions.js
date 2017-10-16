@@ -6,7 +6,9 @@ function displaySearchResults(results) {
   console.log('actions.js --> displaySearchResults');
   console.log(results);
   
-  for(let i = 0; i < results.length; i++) {
+  const streams = results.streams;
+  for(let i = 0; i < streams.length; i++) {
+    const stream = streams[i];
     const root = document.createElement('article');
     
     const thumbnailContainer = document.createElement('div');
@@ -15,23 +17,23 @@ function displaySearchResults(results) {
     root.appendChild(summaryContainer);
     
     const thumbnail = new Image();
-    thumbnail.src = results[i].preview.small;
+    thumbnail.src = streams[i].preview.small;
     thumbnailContainer.appendChild(thumbnail);
     
     const title = document.createElement('h3');
-    const titleText = document.createTextNode(results[i].stream_type);
+    const titleText = document.createTextNode(streams[i].stream_type);
     title.appendChild(titleText);
     summaryContainer.appendChild(title);
     
     const subTitle = document.createElement('h6');
-    const subTitleText = document.createTextNode(`${results[i].game} - ${results[i].viewers} viewers`);
+    const subTitleText = document.createTextNode(`${streams[i].game} - ${streams[i].viewers} viewers`);
     subTitle.appendChild(subTitleText);
     summaryContainer.appendChild(subTitle);
     
-    const creationDate = new Date(results[i].created_at);
+    const creationDate = new Date(streams[i].created_at);
     
     const description = document.createElement('p');
-    const descriptionText = document.createTextNode(`FPS = ${results[i].average_fps}; created = `);
+    const descriptionText = document.createTextNode(`FPS = ${streams[i].average_fps}; created = `);
     description.appendChild(descriptionText);
     summaryContainer.appendChild(description);
     
