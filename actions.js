@@ -7,24 +7,34 @@ function displaySearchResults(results) {
   console.log(results);
   
   for(let i = 0; i < results.length; i++) {
-    const root = document.createElement('section');
+    const root = document.createElement('article');
+    
+    const thumbnailContainer = document.createElement('div');
+    const summaryContainer = document.createElement('div');
+    root.appendChild(thumbnailContainer);
+    root.appendChild(summaryContainer);
     
     const thumbnail = new Image();
     thumbnail.src = results[i].preview.small;
-    root.appendChild(thumbnail);
+    thumbnailContainer.appendChild(thumbnail);
     
     const title = document.createElement('h3');
     const titleText = document.createTextNode(results[i].stream_type);
     title.appendChild(titleText);
-    root.appendChild(title);
+    summaryContainer.appendChild(title);
     
     const subTitle = document.createElement('h6');
     const subTitleText = document.createTextNode(`${results[i].game} - ${results[i].viewers} viewers`);
     subTitle.appendChild(subTitleText);
-    root.appendChild(subTitle);
+    summaryContainer.appendChild(subTitle);
+    
+    const creationDate = new Date(results[i].created_at);
     
     const description = document.createElement('p');
-    const descriptionText = document.createTextNode(``);
+    const descriptionText = document.createTextNode(`FPS = ${results[i].average_fps}; created = `);
+    description.appendChild(descriptionText);
+    summaryContainer.appendChild(description);
+    
     searchResults.appendChild(root);
   }
 }
