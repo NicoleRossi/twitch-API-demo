@@ -73,7 +73,7 @@
   }
 
   function newSearchOnTwitchAPI (evt) {
-
+    queryTwitchAPI(0);
   }
 
   function setupEventListeners (evt) {
@@ -81,7 +81,7 @@
     
     console.log('actions.js --> setupEventListeners');
     
-    btnSearch.addEventListener('mouseup', queryTwitchAPI);
+    btnSearch.addEventListener('mouseup', newSearchOnTwitchAPI);
   }
 
   window.addEventListener('load', setupEventListeners);
