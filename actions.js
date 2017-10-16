@@ -1,9 +1,9 @@
 (function () {
-  const btnSearch = document.getElementById('search_btn');
-  const searchTerm = document.getElementById('search_term');
-  const searchResults = document.getElementById('search_results');
-  const topMostHeadTag = document.getElementsByTagName("head")[0];
-  const callbackName = 'displayTwitchAPISearchResults_9410';
+  let btnSearch;
+  let searchTerm;
+  let searchResults;
+  let topMostHeadTag;
+  let callbackName = 'displayTwitchAPISearchResults_9410';
 
   function prependZeros(number) {
     if (number < 10) return `0${number}`;
@@ -78,6 +78,11 @@
 
   function setupEventListeners (evt) {
     window.removeEventListener('load', setupEventListeners);
+
+    const btnSearch = document.getElementById('search_btn');
+  const searchTerm = document.getElementById('search_term');
+  const searchResults = document.getElementById('search_results');
+  const topMostHeadTag = document.getElementsByTagName("head")[0];
     
     console.log('actions.js --> setupEventListeners');
     
