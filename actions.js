@@ -1,7 +1,3 @@
-let btnSearch;
-let tiSearchTerm;
-let searchResults;
-
 function prependZeros(number) {
   if (number < 10) return `0${number}`;
   return `${number}`;
@@ -11,7 +7,17 @@ function displaySearchResults(results) {
   console.log('actions.js --> displaySearchResults');
   console.log(results);
   
-  const streams = results.streams;
+  const streams = results.streams; 
+  const searchResults = document.getElementById('search_results');
+  
+  if (searchResults.childNodes.length > 1) {
+    searchResults.childNodes.map((node, index) => {
+      if (index !== 0) {
+        searchResults.removeChild(node);
+      }
+    });
+  }
+  
   for(let i = 0; i < streams.length; i++) {
     const stream = streams[i];
     const root = document.createElement('article');
@@ -31,7 +37,7 @@ function displaySearchResults(results) {
     summaryContainer.appendChild(title);
     
     const subTitle = document.createElement('h6');
-    const subTitleText = document.createTextNode(`${streams[i].game} - ${streams[i].viewers} viewers`);
+    const subTitleText = document.createTextNode(`${streams[i].game} -- ${streams[i].viewers} viewers`);
     subTitle.appendChild(subTitleText);
     summaryContainer.appendChild(subTitle);
     
@@ -54,7 +60,8 @@ function displaySearchResults(results) {
 
 function queryTwitchAPI(evt) {
   console.log('actions.js --> queryTwitchAPI');
-  console.log(`search term = ${tiSearchTerm.value}`);
+  
+  const tiSearchTerm = document.getElementById('search_term');
   
   const tag = document.createElement("script");
   tag.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(tiSearchTerm.value)}&client_id=bxqhnlfew1j1uqihshtrglvfj2m4f1&callback=displaySearchResults&limit=5`;
@@ -66,10 +73,7 @@ function setupEventListeners (evt) {
   
   console.log('actions.js --> setupEventListeners');
   
-  btnSearch = document.getElementById('search_btn');
-  tiSearchTerm = document.getElementById('search_term');
-  searchResults = document.getElementById('search_results');
-  
+  const btnSearch = document.getElementById('search_btn');
   btnSearch.addEventListener('mouseup', queryTwitchAPI);
 }
 
