@@ -15,7 +15,7 @@ class TwitchAPI {
     
     request.addEventListener("load", requestListener);
     request.open("GET", `https://api.twitch.tv/kraken/search/streams?q=${searchTerm}`);
-    request.withCredentials = true;
+//     request.withCredentials = true;
     request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
     request.setRequestHeader('Client-ID', 'bxqhnlfew1j1uqihshtrglvfj2m4f1');
     request.send();
