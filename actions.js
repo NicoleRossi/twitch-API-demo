@@ -7,7 +7,7 @@
   let totalSearchResults;
   let pageLocation;
   let topMostHeadTag;
-  let callbackName = 'displayTwitchAPISearchResults_9410'; // to do: replace 9410 with a random number or string
+  let callbackName = `displayTwitchAPISearchResults_${randomId(10)}`; // append a psuedo-random id to avoid collisions in global namespace
   let offset = 0;
   let maxResults = 5;
   let totalResults;
@@ -15,6 +15,54 @@
   function prependZeros(number) {
     if (number < 10) return `0${number}`;
     return `${number}`;
+  }
+
+  function randomId(length){
+    const src = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789';
+    const totalChars = src.length;
+    let idStr = '';
+    for(let i = 0; i < length; i++) {
+      idStr += src[Math.floor(Math.random() * totalChars)];
+    }
+    return idStr;
+  }
+
+  function buildStreamCell(stream) {
+    const root = document.createElement('article');
+      
+    const thumbnailContainer = document.createElement('div');
+    const summaryContainer = document.createElement('div');
+    root.appendChild(thumbnailContainer);
+    root.appendChild(summaryContainer);
+    
+    const thumbnail = new Image();
+    thumbnail.src = streams[i].preview.small;
+    thumbnailContainer.appendChild(thumbnail);
+    
+    const title = document.createElement('h3');
+    const titleText = document.createTextNode(streams[i].stream_type);
+    title.appendChild(titleText);
+    summaryContainer.appendChild(title);
+    
+    const subTitle = document.createElement('h6');
+    const subTitleText = document.createTextNode(`${streams[i].game} -- ${streams[i].viewers} viewers`);
+    subTitle.appendChild(subTitleText);
+    summaryContainer.appendChild(subTitle);
+    
+    const creationDate = new Date(streams[i].created_at);
+    const year = creationDate.getFullYear();
+    const month = prependZeros(creationDate.getMonth()+1);
+    const day = prependZeros(creationDate.getDate());
+    const hours = prependZeros(creationDate.getHours());
+    const minutes = prependZeros(creationDate.getMinutes());
+    const creationDateStr = `${year}.${month}.${day} at ${hours}:${minutes}`;
+    
+    const description = document.createElement('p');
+    const descriptionText = document.createTextNode(`FPS = ${Math.round(streams[i].average_fps)}; created on ${creationDateStr}`);
+    description.appendChild(descriptionText);
+    summaryContainer.appendChild(description);
+    
+    searchResults.appendChild(root);
   }
 
   window[callbackName] = function (results) {
@@ -51,42 +99,7 @@
     }
     
     for(let i = 0; i < streams.length; i++) {
-      const stream = streams[i];
-      const root = document.createElement('article');
-      
-      const thumbnailContainer = document.createElement('div');
-      const summaryContainer = document.createElement('div');
-      root.appendChild(thumbnailContainer);
-      root.appendChild(summaryContainer);
-      
-      const thumbnail = new Image();
-      thumbnail.src = streams[i].preview.small;
-      thumbnailContainer.appendChild(thumbnail);
-      
-      const title = document.createElement('h3');
-      const titleText = document.createTextNode(streams[i].stream_type);
-      title.appendChild(titleText);
-      summaryContainer.appendChild(title);
-      
-      const subTitle = document.createElement('h6');
-      const subTitleText = document.createTextNode(`${streams[i].game} -- ${streams[i].viewers} viewers`);
-      subTitle.appendChild(subTitleText);
-      summaryContainer.appendChild(subTitle);
-      
-      const creationDate = new Date(streams[i].created_at);
-      const year = creationDate.getFullYear();
-      const month = prependZeros(creationDate.getMonth()+1);
-      const day = prependZeros(creationDate.getDate());
-      const hours = prependZeros(creationDate.getHours());
-      const minutes = prependZeros(creationDate.getMinutes());
-      const creationDateStr = `${year}.${month}.${day} at ${hours}:${minutes}`;
-      
-      const description = document.createElement('p');
-      const descriptionText = document.createTextNode(`FPS = ${Math.round(streams[i].average_fps)}; created on ${creationDateStr}`);
-      description.appendChild(descriptionText);
-      summaryContainer.appendChild(description);
-      
-      searchResults.appendChild(root);
+      buildStreamCell(streams[i]);
     }
   }
 
