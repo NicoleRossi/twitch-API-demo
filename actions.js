@@ -3,7 +3,10 @@
   let searchTerm;
   let searchResults;
   let topMostHeadTag;
-  let callbackName = 'displayTwitchAPISearchResults_9410';
+  let callbackName = 'displayTwitchAPISearchResults_9410'; // to do: replace 9410 with a random number or string
+  let offset = 0;
+  let maxResults = 5;
+  let totalResults;
 
   function prependZeros(number) {
     if (number < 10) return `0${number}`;
@@ -14,7 +17,9 @@
     console.log('actions.js --> displaySearchResults');
     console.log(results);
     
-    const streams = results.streams; 
+    const streams = results.streams;
+
+    totalResults = results._total;
     
     const children = searchResults.childNodes;
     if (children.length > 1) {
@@ -67,12 +72,35 @@
     console.log('actions.js --> queryTwitchAPI');
     
     const newJSONP = document.createElement("script");
-    newJSONP.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(searchTerm.value)}&client_id=bxqhnlfew1j1uqihshtrglvfj2m4f1&callback=${callbackName}&limit=5&offset=${offset}`;
+    newJSONP.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(searchTerm.value)}&client_id=bxqhnlfew1j1uqihshtrglvfj2m4f1&callback=${window[callbackName]}&limit=${maxResults}&offset=${offset}`;
     topMostHeadTag.appendChild(newJSONP);
   }
 
+  function getNextGroupOfStreams() {
+    offset += maxResults;
+
+    if (offset > totalResults || searchResults.childNodes.length < 6) {
+      offset -= maxResults;
+      return;
+    }
+
+    queryTwitchAPI(offset);
+  }
+
+  function getPreviousGroupOfStreams() {
+    offset -= maxResults;
+
+    if (offset < 0) {
+      offset = 0;
+      return;
+    }
+
+    queryTwitchAPI(offset);
+  }
+
   function newSearchOnTwitchAPI (evt) {
-    queryTwitchAPI(0);
+    offset = 0;
+    queryTwitchAPI(offset);
   }
 
   function setupEventListeners (evt) {
