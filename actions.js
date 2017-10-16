@@ -3,7 +3,7 @@ let tiSearchTerm;
 let searchResults;
 
 function setupEventListeners (evt) {
-  window.removeEventListner('load', setupEventListeners);
+  window.removeEventListener('load', setupEventListeners);
   
   console.log('actions.js --> setupEventListeners');
   
@@ -12,4 +12,4 @@ function setupEventListeners (evt) {
   searchResults = document.getElementById('search_results');
 }
 
-window.addEventListner('load', setupEventListeners);
+window.addEventListener('load', setupEventListeners);
