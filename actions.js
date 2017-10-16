@@ -74,7 +74,7 @@
     console.log('actions.js --> queryTwitchAPI');
     
     const newJSONP = document.createElement("script");
-    newJSONP.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(searchTerm.value)}&client_id=bxqhnlfew1j1uqihshtrglvfj2m4f1&callback=${window[callbackName]}&limit=${maxResults}&offset=${offset}`;
+    newJSONP.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(searchTerm.value)}&client_id=bxqhnlfew1j1uqihshtrglvfj2m4f1&callback=${callbackName}&limit=${maxResults}&offset=${offset}`;
     topMostHeadTag.appendChild(newJSONP);
   }
 
