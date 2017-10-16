@@ -36,20 +36,20 @@
     root.appendChild(summaryContainer);
     
     const thumbnail = new Image();
-    thumbnail.src = streams[i].preview.small;
+    thumbnail.src = stream.preview.small;
     thumbnailContainer.appendChild(thumbnail);
     
     const title = document.createElement('h3');
-    const titleText = document.createTextNode(streams[i].stream_type);
+    const titleText = document.createTextNode(stream.stream_type);
     title.appendChild(titleText);
     summaryContainer.appendChild(title);
     
     const subTitle = document.createElement('h6');
-    const subTitleText = document.createTextNode(`${streams[i].game} -- ${streams[i].viewers} viewers`);
+    const subTitleText = document.createTextNode(`${stream.game} -- ${stream.viewers} viewers`);
     subTitle.appendChild(subTitleText);
     summaryContainer.appendChild(subTitle);
     
-    const creationDate = new Date(streams[i].created_at);
+    const creationDate = new Date(stream.created_at);
     const year = creationDate.getFullYear();
     const month = prependZeros(creationDate.getMonth()+1);
     const day = prependZeros(creationDate.getDate());
@@ -58,7 +58,7 @@
     const creationDateStr = `${year}.${month}.${day} at ${hours}:${minutes}`;
     
     const description = document.createElement('p');
-    const descriptionText = document.createTextNode(`FPS = ${Math.round(streams[i].average_fps)}; created on ${creationDateStr}`);
+    const descriptionText = document.createTextNode(`FPS = ${Math.round(stream.average_fps)}; created on ${creationDateStr}`);
     description.appendChild(descriptionText);
     summaryContainer.appendChild(description);
     
