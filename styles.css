@@ -10,7 +10,7 @@ header {
   flex-direction: row;
 }
 
-header input {
+input[type='text'] {
   margin: 4em 0.75em 2em 2em;
 }
 
