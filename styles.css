@@ -47,6 +47,10 @@ p, h6 {
   margin: 0 0 0 0;
 }
 
+button {
+  margin-left: 0.25em;
+}
+
 article img {
   border: 1px solid #000;
   margin-left: 1em;
@@ -58,10 +62,6 @@ article:last-child {
 
 div + div {
   margin-left: 1em;
-}
-
-input[type='text'] + button {
-  margin-left: 0.25em;
 }
 
 .bordered_box {
