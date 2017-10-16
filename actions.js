@@ -29,6 +29,7 @@
 
     let totalPages = Math.ceil(totalResults / maxResults);
     let currPage = (offset / maxResults) + 1;
+    pageLocation.textContent = `${currPage} / ${totalPages}`;
     
     const children = searchResults.childNodes;
     if (children.length > 1) {
