@@ -10,6 +10,10 @@ header {
   flex-direction: row;
 }
 
+header input {
+  margin: 4em 2em 2em 2em;
+}
+
 section {
   display: flex;
   flex-direction: column;
