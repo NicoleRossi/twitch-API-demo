@@ -5,6 +5,7 @@
   let searchTerm;
   let searchResults;
   let totalSearchResults;
+  let pageLocation;
   let topMostHeadTag;
   let callbackName = 'displayTwitchAPISearchResults_9410'; // to do: replace 9410 with a random number or string
   let offset = 0;
@@ -25,6 +26,9 @@
     totalResults = results._total;
     
     totalSearchResults.textContent = `Total results:  ${totalResults}`;
+
+    let totalPages = Math.ceil(totalResults / maxResults);
+    let currPage = (offset / maxResults) + 1;
     
     const children = searchResults.childNodes;
     if (children.length > 1) {
@@ -117,6 +121,7 @@
     searchTerm = document.getElementById('search_term');
     searchResults = document.getElementById('search_results');
     totalSearchResults = document.getElementById('hit_count');
+    pageLocation = document.getElementById('page_location');
     topMostHeadTag = document.getElementsByTagName("head")[0];
     
     console.log('actions.js --> setupEventListeners');
