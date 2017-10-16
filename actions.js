@@ -1,5 +1,7 @@
 (function () {
   let btnSearch;
+  let btnNext;
+  let btnPrev;
   let searchTerm;
   let searchResults;
   let topMostHeadTag;
@@ -106,6 +108,8 @@
   function setupEventListeners (evt) {
     window.removeEventListener('load', setupEventListeners);
 
+    btnNext = document.getElementById('next_btn');
+    btnPrev = document.getElementById('prev_btn');
     btnSearch = document.getElementById('search_btn');
     searchTerm = document.getElementById('search_term');
     searchResults = document.getElementById('search_results');
@@ -114,6 +118,8 @@
     console.log('actions.js --> setupEventListeners');
     
     btnSearch.addEventListener('mouseup', newSearchOnTwitchAPI);
+    btnNext.addEventListener('mouseup', getNextGroupOfStreams);
+    btnPrev.addEventListener('mouseup', getPreviousGroupOfStreams);
   }
 
   window.addEventListener('load', setupEventListeners);
