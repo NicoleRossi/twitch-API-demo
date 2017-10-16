@@ -60,6 +60,10 @@ div + div {
   margin-left: 1em;
 }
 
+input[type='text'] + button {
+  margin-left: 0.5em;
+}
+
 .bordered_box {
   border: 1px solid #000;
 }
