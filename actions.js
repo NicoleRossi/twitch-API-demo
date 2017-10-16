@@ -1,4 +1,4 @@
-import TwitchAPI from './scripts/TwitchAPI';
+// import TwitchAPI from './scripts/TwitchAPI';
 
 let btnSearch;
 let tiSearchTerm;
