@@ -12,6 +12,7 @@ header {
 section {
   display: flex;
   flex-direction: column;
+  border-top: 1px solid #000;
 }
 
 nav {
@@ -24,6 +25,11 @@ article {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+img {
+  border: 1px solid #000;
+  margin-left: 1em;
 }
 
 div + div {
