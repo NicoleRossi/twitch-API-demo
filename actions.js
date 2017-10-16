@@ -49,7 +49,7 @@ function displaySearchResults(results) {
     const creationDateStr = `${year}.${month}.${day} at ${hours}:${minutes}`;
     
     const description = document.createElement('p');
-    const descriptionText = document.createTextNode(`FPS = ${streams[i].average_fps}; created on ${creationDateStr}`);
+    const descriptionText = document.createTextNode(`FPS = ${Math.round(streams[i].average_fps)}; created on ${creationDateStr}`);
     description.appendChild(descriptionText);
     summaryContainer.appendChild(description);
     
