@@ -17,6 +17,7 @@ section {
 nav {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 article {
@@ -27,4 +28,8 @@ article {
 
 div + div {
   margin-left: 1em;
+}
+
+.bordered_box {
+  border: 1px #000;
 }
