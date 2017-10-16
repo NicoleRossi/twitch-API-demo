@@ -11,7 +11,7 @@ function queryTwitchAPI(evt) {
   console.log(`search term = ${tiSearchTerm.value}`);
   
   const tag = document.createElement("script");
-  tag.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(tiSearchTerm.value)}`;
+  tag.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(tiSearchTerm.value)}&client_id=bxqhnlfew1j1uqihshtrglvfj2m4f1`;
   document.getElementsByTagName("head")[0].appendChild(tag);
 }
 
