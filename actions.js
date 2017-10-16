@@ -18,7 +18,6 @@
   }
 
   window[callbackName] = function (results) {
-    console.log('actions.js --> displaySearchResults');
     console.log(results);
     
     const streams = results.streams;
@@ -92,8 +91,6 @@
   }
 
   function queryTwitchAPI(offset) {
-    console.log('actions.js --> queryTwitchAPI');
-    
     const newJSONP = document.createElement("script");
     newJSONP.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(searchTerm.value)}&client_id=bxqhnlfew1j1uqihshtrglvfj2m4f1&callback=${callbackName}&limit=${maxResults}&offset=${offset}`;
     topMostHeadTag.appendChild(newJSONP);
@@ -138,11 +135,9 @@
     pageLocation = document.getElementById('page_location');
     topMostHeadTag = document.getElementsByTagName("head")[0];
     
-    console.log('actions.js --> setupEventListeners');
-    
-    btnSearch.addEventListener('mouseup', newSearchOnTwitchAPI);
-    btnNext.addEventListener('mouseup', getNextGroupOfStreams);
-    btnPrev.addEventListener('mouseup', getPreviousGroupOfStreams);
+    btnSearch.addEventListener('click', newSearchOnTwitchAPI);
+    btnNext.addEventListener('click', getNextGroupOfStreams);
+    btnPrev.addEventListener('click', getPreviousGroupOfStreams);
   }
 
   window.addEventListener('load', setupEventListeners);
