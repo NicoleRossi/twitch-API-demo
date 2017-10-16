@@ -31,5 +31,5 @@ div + div {
 }
 
 .bordered_box {
-  border: 1px #000;
+  border: 1px solid #000;
 }
