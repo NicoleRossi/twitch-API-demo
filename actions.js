@@ -79,10 +79,10 @@
   function setupEventListeners (evt) {
     window.removeEventListener('load', setupEventListeners);
 
-    const btnSearch = document.getElementById('search_btn');
-  const searchTerm = document.getElementById('search_term');
-  const searchResults = document.getElementById('search_results');
-  const topMostHeadTag = document.getElementsByTagName("head")[0];
+    btnSearch = document.getElementById('search_btn');
+    searchTerm = document.getElementById('search_term');
+    searchResults = document.getElementById('search_results');
+    topMostHeadTag = document.getElementsByTagName("head")[0];
     
     console.log('actions.js --> setupEventListeners');
     
