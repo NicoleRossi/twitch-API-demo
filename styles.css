@@ -1,1 +1,28 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
 
+header {
+  display: flex;
+  flex-direction: row;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+}
+
+article {
+  display: flex;
+  flex-direction: row;
+}
+
+article img {
+  display: block;
+}
