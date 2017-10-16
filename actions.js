@@ -5,11 +5,28 @@ let searchResults;
 function displaySearchResults(results) {
   console.log('actions.js --> displaySearchResults');
   console.log(results);
-  results.streams.map((stream) => {
-    for(let prop in stream) {
-      console.log(`stream[${prop}] = ${stream[prop]}`);
-    }
-  });
+  
+  for(let i = 0; i < results.length; i++) {
+    const root = document.createElement('section');
+    
+    const thumbnail = new Image();
+    thumbnail.src = results[i].preview.small;
+    root.appendChild(thumbnail);
+    
+    const title = document.createElement('h3');
+    const titleText = document.createTextNode(results[i].stream_type);
+    title.appendChild(titleText);
+    root.appendChild(title);
+    
+    const subTitle = document.createElement('h6');
+    const subTitleText = document.createTextNode(`${results[i].game} - ${results[i].viewers} viewers`);
+    subTitle.appendChild(subTitleText);
+    root.appendChild(subTitle);
+    
+    const description = document.createElement('p');
+    const descriptionText = document.createTextNode(``);
+    searchResults.appendChild(root);
+  }
 }
 
 function queryTwitchAPI(evt) {
