@@ -11,6 +11,7 @@
   let offset = 0;
   let maxResults = 5;
   let totalResults;
+  let clientId = 'bxqhnlfew1j1uqihshtrglvfj2m4f1';
 
   function prependZeros(number) {
     if (number < 10) return `0${number}`;
@@ -30,7 +31,7 @@
   function buildStreamCell(stream) {
     const root = document.createElement('article');
     root.addEventListener('click', () => {
-      window.open(stream._links.self, '_blank');
+      window.open(`${stream._links.self}?client_id=${clientId}`, '_blank');
     });
       
     const thumbnailContainer = document.createElement('div');
@@ -108,7 +109,7 @@
 
   function queryTwitchAPI(offset) {
     const newJSONP = document.createElement("script");
-    newJSONP.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(searchTerm.value)}&client_id=bxqhnlfew1j1uqihshtrglvfj2m4f1&callback=${callbackName}&limit=${maxResults}&offset=${offset}`;
+    newJSONP.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(searchTerm.value)}&client_id=${clientId}&callback=${callbackName}&limit=${maxResults}&offset=${offset}`;
     topMostHeadTag.appendChild(newJSONP);
   }
 
