@@ -29,6 +29,9 @@
 
   function buildStreamCell(stream) {
     const root = document.createElement('article');
+    root.addEventListener('click', () => {
+      window.open(stream._links.self, '_blank');
+    });
       
     const thumbnailContainer = document.createElement('div');
     const summaryContainer = document.createElement('div');
