@@ -35,6 +35,7 @@ article {
   flex-direction: row;
   align-items: center;
   margin-top: 1em;
+  cursor: pointer;
 }
 
 h3 {
