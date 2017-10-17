@@ -108,6 +108,8 @@
   }
 
   function queryTwitchAPI(offset) {
+    if (!searchTerm.value) return;
+        
     const newJSONP = document.createElement("script");
     newJSONP.src = `https://api.twitch.tv/kraken/search/streams?query=${escape(searchTerm.value)}&client_id=${clientId}&callback=${callbackName}&limit=${maxResults}&offset=${offset}`;
     topMostHeadTag.appendChild(newJSONP);
