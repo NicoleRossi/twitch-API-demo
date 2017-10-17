@@ -2,7 +2,7 @@
 Playing with the Twitch Developer API
 
 # How To Use
-Click inside the "Search query.." text input and enter a search term; then click the "Search" button.  Clicking a stream will redirect to a new window/tab showing a blob of JSON associated with the clicked stream.  Clicking the next or previous button will go forward or backwards, respectively.  The next/previous buttons hide themselves if they cannot be used (e.g. if you're viewing the first page of search results, the previous button will not show).
+Click inside the "Search query..." text input and enter a search term; then click the "Search" button.  Clicking a stream will redirect to a new window/tab showing a blob of JSON associated with the clicked stream.  Clicking the next or previous button will go forward or backwards, respectively.  The next/previous buttons hide themselves if they cannot be used (e.g. if you're viewing the first page of search results, the previous button will not show).
 
 # Decision Making
 I've noticed that requesting 5 (for example) streams at a time does not alway yield exactly 5 streams returned, even when 'total results' is greater than 5.  I assume this is because a stream suddenly became unavailable.  
