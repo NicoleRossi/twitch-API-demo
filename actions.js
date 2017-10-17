@@ -116,7 +116,7 @@
   function getNextGroupOfStreams() {
     offset += maxResults;
 
-    if (offset > totalResults || searchResults.childNodes.length < 6) {
+    if (offset > totalResults) {
       offset -= maxResults;
       return;
     }
